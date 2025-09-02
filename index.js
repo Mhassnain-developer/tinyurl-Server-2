@@ -5,6 +5,7 @@ import { signJWT, verifyJWT } from "./Utils/jwt.js";
 
 import { ConnectMongoDb } from "./Utils/mongodb.js";
 import URLRoute from "./Routes/urls.js";
+import UserRoute from "./Routes/user.js"
 
 dotenv.config();
 const app= express();
@@ -15,19 +16,10 @@ app.use(express.json());
 ConnectMongoDb();
 
 app.use("/url", URLRoute);
-
+app.use("/user", UserRoute);
 
 
 app.listen(5050,() => {
     console.log("i am working");
 });
 
-signJWT({
-    name:"hassnain",
-    userID:"1234",
-
-});
-
-verifyJWT(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiaGFzc25haW4iLCJ1c2VySUQiOiIxMjM0IiwiaWF0IjoxNzU2NzEyMjQ2LCJleHAiOjE3NTY3MTIzMDZ9.vPgaywymAuIFcnYil37fQRVZBbtCcs6QF50NiCiwVZo"
-);

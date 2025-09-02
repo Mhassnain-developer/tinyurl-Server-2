@@ -7,7 +7,7 @@ export const signJWT = (payload) => {
     try{
    
         const token = jwt.sign(payload, process.env.SECRET_KEY,{
-            expiresIn: "1m",
+            expiresIn: "1h",
         });
 
         console.log(token);
@@ -21,8 +21,8 @@ export const signJWT = (payload) => {
 
 export const verifyJWT = (token) => {
     try{
-        jwt.verify(token,process.env.SECRET_KEY);
-        return (true);
+        const data = jwt.verify(token,process.env.SECRET_KEY);
+        return data;
     }
     catch(err) {
        console.log(err)

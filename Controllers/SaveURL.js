@@ -7,10 +7,10 @@ export const SaveURL = async (req,res) => {
         const newURL = new URLs({longUrl: longUrl});
         const savedRef = await newURL.save();
         const shortURLId = savedRef._id;
-        const shortURL = `${process.env.ServerURL}/url/${shortURLId}`;
+const shortURL = `http://localhost:5050/url/${shortURLId}`;
         res.status(200).json({
             ok: true,
-            shortURL: shortURL,
+            shortURL:shortURL,
         });
     }
     catch (err) {
